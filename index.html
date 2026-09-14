@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>Rodrigo Maldonado — Galería</title>
+<meta name="description" content="Galería fotográfica de Rodrigo Maldonado. Puerto Vallarta, memoria, arquitectura, naturaleza y detalles.">
+<style>
+:root{--bg:#080808;--paper:#eee9df;--muted:#a9a49b;--line:rgba(238,233,223,.18);--gold:#c6aa79;--green:#25d366}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--paper);font-family:Inter,Arial,sans-serif;overflow-x:hidden}button,a{font:inherit}
+.hero{min-height:100svh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;isolation:isolate;background:linear-gradient(90deg,rgba(5,5,5,.86),rgba(5,5,5,.28) 48%,rgba(5,5,5,.78)),linear-gradient(180deg,rgba(0,0,0,.20),#080808 98%),url("assets/galeria-bg.png") center/cover no-repeat}
+.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,transparent 0,rgba(0,0,0,.18) 45%,rgba(0,0,0,.72) 100%);z-index:-1}
+.nav{position:absolute;top:0;left:0;right:0;padding:24px 5vw;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);backdrop-filter:blur(8px);z-index:5}
+.brand{letter-spacing:.28em;font-size:.72rem;text-transform:uppercase}.brand strong{display:block;font-size:1.2rem;letter-spacing:.18em;font-weight:400}.navlinks{display:flex;gap:24px}.navlinks a{color:var(--paper);text-decoration:none;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;opacity:.82}
+.hero-inner{width:min(1180px,90vw);display:grid;grid-template-columns:1.1fr .9fr;gap:6vw;align-items:end}.kicker{font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+h1{font-family:Georgia,serif;font-size:clamp(3.3rem,8vw,7.6rem);font-weight:400;line-height:.9;margin:0 0 28px;letter-spacing:-.04em}.lead{max-width:540px;color:#d2cec6;line-height:1.8;font-size:1rem}.signature{font-family:cursive;font-size:2.1rem;margin-top:25px;color:#d7c6a7}
+.welcome{justify-self:end;max-width:360px;padding:28px;border:1px solid var(--line);background:rgba(0,0,0,.28);backdrop-filter:blur(12px)}.welcome h2{font:400 1.7rem Georgia,serif;margin:0 0 14px}.welcome p{color:var(--muted);line-height:1.7;font-size:.9rem}.explore{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:#c9c2b5}
+.music{position:fixed;left:24px;bottom:24px;z-index:20;display:flex;align-items:center;gap:12px;background:rgba(10,10,10,.72);border:1px solid var(--line);padding:10px 14px;backdrop-filter:blur(12px)}.music button{border:0;background:none;color:var(--paper);cursor:pointer;width:28px;height:28px}.music small{display:block;color:var(--muted);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase}.music span{font-size:.76rem}
+section{padding:110px 5vw}.section-head{max-width:1200px;margin:0 auto 48px;display:flex;justify-content:space-between;align-items:end;gap:30px}.section-head h2{font:400 clamp(2.4rem,5vw,4.8rem) Georgia,serif;margin:0}.section-head p{max-width:420px;color:var(--muted);line-height:1.7}
+.filters{display:flex;gap:10px;flex-wrap:wrap;max-width:1200px;margin:0 auto 38px}.filter{border:1px solid var(--line);background:none;color:var(--muted);padding:9px 14px;cursor:pointer;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase}.filter.active,.filter:hover{color:var(--paper);border-color:var(--gold)}
+.grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(12,1fr);gap:24px}.card{grid-column:span 4;position:relative;background:#111;overflow:hidden;border:1px solid rgba(255,255,255,.08);cursor:pointer}.card img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .8s ease,filter .8s ease}.card:hover img{transform:scale(1.035);filter:brightness(1.08)}
+.card-info{padding:18px 18px 20px;background:linear-gradient(#111,#0b0b0b)}.card-info .code{font-size:.6rem;color:var(--gold);letter-spacing:.2em}.card-info h3{font:400 1.35rem Georgia,serif;margin:7px 0}.card-info p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.5}.price{margin-top:14px;color:#ddd;font-size:.75rem;letter-spacing:.08em}
+.about{background:#0d0d0d;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.about-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:9vw}.about h2{font:400 3.5rem Georgia,serif;margin:0}.about p{color:var(--muted);line-height:1.9}footer{padding:55px 5vw;text-align:center;color:#777;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:50;display:none;align-items:center;justify-content:center;padding:3vw}.modal.open{display:flex}.modal-box{max-width:1180px;width:100%;max-height:92vh;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr);background:#0e0e0e;border:1px solid var(--line);overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.55)}.modal-visual{background:#050505;display:flex;align-items:center;justify-content:center;min-height:70vh}.modal img{width:100%;height:82vh;max-height:92vh;object-fit:contain;background:#050505}
+.modal-copy{padding:48px 38px;display:flex;flex-direction:column;justify-content:center;overflow:auto}.modal-copy .code{color:var(--gold);font-size:.65rem;letter-spacing:.2em}.modal-copy h2{font:400 clamp(2rem,3vw,3rem) Georgia,serif;margin:10px 0 18px;line-height:1.05}.modal-copy .desc{color:var(--muted);line-height:1.8;font-size:.9rem;margin:0 0 24px}.detail-label{font-size:.62rem;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);margin:18px 0 10px}
+.size-options{display:grid;gap:8px}.size-option{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:12px 13px;background:#101010;color:#ddd;border:1px solid rgba(238,233,223,.12);cursor:pointer;text-align:left;font-size:.76rem;transition:.2s ease}.size-option:hover{border-color:var(--gold)}.size-option.selected{border-color:var(--gold);background:rgba(198,170,121,.10);color:#fff}.size-option .amount{color:var(--gold);white-space:nowrap}
+.reserve-btn{display:block;text-align:center;text-decoration:none;margin-top:18px;padding:15px 18px;background:var(--green);color:#071b0d;font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;transition:.2s}.reserve-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.reserve-btn.disabled{opacity:.55;pointer-events:none}.selected-note,.reserve-note{font-size:.65rem;color:#777;line-height:1.5;margin:10px 0 0;text-align:center}.selected-note{color:#aaa}.close{position:absolute;right:22px;top:16px;background:rgba(0,0,0,.45);border:1px solid var(--line);color:#fff;font-size:1.8rem;line-height:1;width:40px;height:40px;cursor:pointer;z-index:3}
+@media(max-width:800px){.navlinks{display:none}.hero-inner{grid-template-columns:1fr}.welcome{justify-self:start}.grid{grid-template-columns:1fr}.card{grid-column:span 1}.about-inner{grid-template-columns:1fr}.modal{padding:0}.modal-box{height:100vh;max-height:none;grid-template-columns:1fr;overflow-y:auto}.modal-visual{min-height:45vh}.modal img{height:48vh;max-height:none}.modal-copy{padding:28px 24px 36px}.close{top:12px;right:12px}}
+</style>
+</head>
+<body>
+<header class="hero" id="inicio">
+<nav class="nav"><div class="brand"><strong>RM</strong> Rodrigo Maldonado · Galería</div><div class="navlinks"><a href="#coleccion">Colección</a><a href="#historia">Historia</a><a href="#contacto">Contacto</a></div></nav>
+<div class="hero-inner"><div><div class="kicker">Fotografía de autor · Puerto Vallarta</div><h1>Mirar.<br>Recordar.</h1><p class="lead">Imágenes que capturan lugares, instantes y detalles que con el tiempo adquieren otra dimensión.</p><div class="signature">Rodrigo Maldonado</div></div><aside class="welcome"><h2>Bienvenido</h2><p>Cada fotografía es una ventana a un momento. Esta galería reúne una selección de imágenes de Puerto Vallarta y otras historias visuales.</p></aside></div>
+<div class="explore">Desliza para explorar ↓</div>
+</header>
+
+<div class="music" title="Puedes agregar tu pista instrumental como assets/music.mp3"><button id="musicBtn" aria-label="Música">♪</button><div><small>Ambiente</small><span>Galería · Nocturno</span></div></div>
+
+<section id="coleccion"><div class="section-head"><div><div class="kicker">Selección RM</div><h2>La colección</h2></div><p>Once imágenes seleccionadas para contar lugares, instantes y memoria desde la mirada de Rodrigo Maldonado.</p></div>
+<div class="filters"><button class="filter active" data-filter="all">Todas</button><button class="filter" data-filter="vallarta">Puerto Vallarta</button><button class="filter" data-filter="artistica">Artística</button><button class="filter" data-filter="documental">Documental</button></div>
+<div class="grid">
+<article class="card" data-cat="vallarta artistica" data-title="Fuego sobre el Pacífico" data-code="RM-001" data-sizes="40 × 60 cm — $1,300 MXN|60 × 90 cm — $2,200 MXN|80 × 120 cm — $3,500 MXN" data-img="assets/RM-001.jpg" data-desc="El Pacífico al final del día, convertido en una explosión de luz, color y nubes. Una imagen donde el horizonte parece arder sobre el mar.">
+<img src="assets/RM-001.jpg" alt="Fuego sobre el Pacífico" loading="lazy">
+<div class="card-info"><div class="code">RM-001</div><h3>Fuego sobre el Pacífico</h3><p>Puerto Vallarta · paisaje</p><div class="price">Desde $1,300 MXN</div></div>
+</article>
+<article class="card" data-cat="vallarta artistica" data-title="Cielo en llamas" data-code="RM-002" data-sizes="40 × 60 cm — $1,300 MXN|60 × 90 cm — $2,200 MXN|80 × 120 cm — $3,500 MXN" data-img="assets/RM-002.jpg" data-desc="Un cielo dramático se enciende sobre la bahía. Las nubes y la luz del atardecer convierten el paisaje en una escena casi pictórica.">
+<img src="assets/RM-002.jpg" alt="Cielo en llamas" loading="lazy">
+<div class="card-info"><div class="code">RM-002</div><h3>Cielo en llamas</h3><p>Puerto Vallarta · paisaje</p><div class="price">Desde $1,300 MXN</div></div>
+</article>
+<article class="card" data-cat="vallarta" data-title="Navegando hacia la luz" data-code="RM-003" data-sizes="40 × 60 cm — $1,300 MXN|60 × 90 cm — $2,200 MXN|80 × 120 cm — $3,500 MXN" data-img="assets/RM-003.jpg" data-desc="Dos veleros avanzan sobre el Pacífico bajo un cielo monumental. La luz que se abre entre las nubes conduce la mirada hacia el horizonte.">
+<img src="assets/RM-003.jpg" alt="Navegando hacia la luz" loading="lazy">
+<div class="card-info"><div class="code">RM-003</div><h3>Navegando hacia la luz</h3><p>Puerto Vallarta · mar</p><div class="price">Desde $1,300 MXN</div></div>
+</article>
+<article class="card" data-cat="artistica vallarta" data-title="Rayos de luz" data-code="RM-004" data-sizes="40 × 60 cm — Por confirmar|60 × 90 cm — Por confirmar|80 × 120 cm — Por confirmar" data-img="assets/RM-004.jpg" data-desc="Rayos de luz atraviesan la vegetación y crean una atmósfera casi irreal. Una imagen construida alrededor del contraste entre sombra, agua y luminosidad.">
+<img src="assets/RM-004.jpg" alt="Rayos de luz" loading="lazy">
+<div class="card-info"><div class="code">RM-004</div><h3>Rayos de luz</h3><p>Naturaleza · luz</p><div class="price">Precio por confirmar</div></div>
+</article>
+<article class="card" data-cat="vallarta" data-title="El muelle al atardecer" data-code="RM-005" data-sizes="40 × 60 cm — Por confirmar|60 × 90 cm — Por confirmar|80 × 120 cm — Por confirmar" data-img="assets/RM-005.jpg" data-desc="La bahía se transforma al caer la tarde. Siluetas, luces y arquitectura enmarcan un horizonte encendido que guarda la atmósfera de Vallarta.">
+<img src="assets/RM-005.jpg" alt="El muelle al atardecer" loading="lazy">
+<div class="card-info"><div class="code">RM-005</div><h3>El muelle al atardecer</h3><p>Puerto Vallarta · atardecer</p><div class="price">Precio por confirmar</div></div>
+</article>
+<article class="card" data-cat="vallarta" data-title="El tiempo de Vallarta" data-code="RM-006" data-sizes="60 × 90 cm — $2,800 MXN|80 × 120 cm — $4,200 MXN|100 × 150 cm — $6,500 MXN" data-img="assets/RM-006.jpg" data-desc="Una mirada fragmentada a la arquitectura de Puerto Vallarta: ladrillo, figuras aladas, cielo y un reloj que parece marcar el paso del tiempo sobre una ciudad en constante transformación.">
+<img src="assets/RM-006.jpg" alt="El tiempo de Vallarta" loading="lazy">
+<div class="card-info"><div class="code">RM-006</div><h3>El tiempo de Vallarta</h3><p>Arquitectura · identidad urbana</p><div class="price">Desde $2,800 MXN</div></div>
+</article>
+<article class="card" data-cat="artistica" data-title="Tiempo líquido" data-code="RM-007" data-sizes="60 × 60 cm — $3,000 MXN|80 × 80 cm — $4,500 MXN|100 × 100 cm — $6,500 MXN" data-img="assets/RM-007.jpg" data-desc="Un reloj de agua transforma el paso del tiempo en una experiencia visual. El líquido, la luz y los reflejos convierten un objeto cotidiano en una pequeña escultura.">
+<img src="assets/RM-007.jpg" alt="Tiempo líquido" loading="lazy">
+<div class="card-info"><div class="code">RM-007</div><h3>Tiempo líquido</h3><p>Artística · detalles</p><div class="price">Desde $3,000 MXN</div></div>
+</article>
+<article class="card" data-cat="documental vallarta" data-title="Vallarta frente al gigante" data-code="RM-008" data-sizes="60 × 40 cm — $2,200 MXN|90 × 60 cm — $3,500 MXN|120 × 80 cm — $5,000 MXN" data-img="assets/RM-008.jpg" data-desc="A la orilla del Pacífico, la vida cotidiana continúa entre las rocas mientras un enorme crucero domina el horizonte. Una escena de memoria urbana y turismo.">
+<img src="assets/RM-008.jpg" alt="Vallarta frente al gigante" loading="lazy">
+<div class="card-info"><div class="code">RM-008</div><h3>Vallarta frente al gigante</h3><p>Memoria urbana · documental</p><div class="price">Desde $2,200 MXN</div></div>
+</article>
+<article class="card" data-cat="artistica vallarta" data-title="Entre agua y ciudad" data-code="RM-009" data-sizes="40 × 60 cm — $2,200 MXN|60 × 90 cm — $3,500 MXN|80 × 120 cm — $5,000 MXN" data-img="assets/RM-009.jpg" data-desc="Una escena cotidiana convertida en instante fotográfico: una paloma se sostiene sobre el agua mientras las salpicaduras congelan el movimiento y la ciudad se disuelve al fondo. Una imagen urbana, espontánea y llena de textura.">
+<img src="assets/RM-009.jpg" alt="Entre agua y ciudad" loading="lazy">
+<div class="card-info"><div class="code">RM-009</div><h3>Entre agua y ciudad</h3><p>Urbana · naturaleza · instante</p><div class="price">Desde $2,200 MXN</div></div>
+</article>
+<article class="card" data-cat="artistica" data-title="Libertad" data-code="RM-010" data-sizes="40 × 60 cm — $2,200 MXN|60 × 90 cm — $3,500 MXN|80 × 120 cm — $5,000 MXN" data-img="assets/RM-010.jpg" data-desc="Un delfín rompe la superficie del Pacífico en un instante de movimiento y libertad. El agua, la luz y la estela alrededor del animal construyen una imagen limpia y dinámica.">
+<img src="assets/RM-010.jpg" alt="Libertad" loading="lazy">
+<div class="card-info"><div class="code">RM-010</div><h3>Libertad</h3><p>Naturaleza · fauna marina</p><div class="price">Desde $2,200 MXN</div></div>
+</article>
+<article class="card" data-cat="documental vallarta" data-title="Un encuentro en el Pacífico" data-code="RM-011" data-sizes="40 × 60 cm — $2,500 MXN|60 × 90 cm — $4,000 MXN|80 × 120 cm — $5,800 MXN" data-img="assets/RM-011.jpg" data-desc="Una ballena emerge frente al Marigalante mientras dos espectadores contemplan la escena desde el agua. Más que un salto: un instante de Puerto Vallarta convertido en memoria.">
+<img src="assets/RM-011.jpg" alt="Un encuentro en el Pacífico" loading="lazy">
+<div class="card-info"><div class="code">RM-011</div><h3>Un encuentro en el Pacífico</h3><p>Puerto Vallarta · documental</p><div class="price">Desde $2,500 MXN</div></div>
+</article>
+</div></section>
+
+<section class="about" id="historia"><div class="about-inner"><div><div class="kicker">El archivo</div><h2>Fotografías que<br>guardan tiempo.</h2></div><div><p>Esta galería nace de un archivo fotográfico personal y de la intención de rescatar imágenes que merecen volver a ser vistas.</p><p>La colección crecerá fotografía por fotografía, conservando su historia, su contexto y la mirada detrás de cada toma.</p></div></div></section>
+
+<footer id="contacto">Rodrigo Maldonado · Galería · Puerto Vallarta · © <span id="year"></span></footer>
+
+<div class="modal" id="modal" aria-hidden="true"><button class="close" id="close" aria-label="Cerrar">×</button><div class="modal-box"><div class="modal-visual"><img id="modalImg" alt=""></div><div class="modal-copy"><div class="code" id="modalCode"></div><h2 id="modalTitle"></h2><p class="desc" id="modalDesc"></p><div class="detail-label">Selecciona la medida</div><div class="size-options" id="modalSizes"></div><p class="selected-note" id="selectedNote">Selecciona una medida para preparar tu reserva.</p><a class="reserve-btn disabled" id="reserveBtn" href="#" target="_blank" rel="noopener">Reservar fotografía</a><p class="reserve-note">WhatsApp abrirá un mensaje con el código, la medida y el precio seleccionados.</p></div></div></div>
+
+<script>
+const modal=document.getElementById('modal');
+const reserveBtn=document.getElementById('reserveBtn');
+const selectedNote=document.getElementById('selectedNote');
+const WHATSAPP_NUMBER='523221340289';
+
+document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  const f=b.dataset.filter;
+  document.querySelectorAll('.card').forEach(c=>c.style.display=(f==='all'||c.dataset.cat.includes(f))?'block':'none');
+}));
+
+document.querySelectorAll('.card').forEach(card=>card.addEventListener('click',()=>{
+  const title=card.dataset.title, code=card.dataset.code, desc=card.dataset.desc;
+  const sizes=(card.dataset.sizes||'').split('|').filter(Boolean);
+  document.getElementById('modalImg').src=card.dataset.img;
+  document.getElementById('modalImg').alt=title;
+  document.getElementById('modalCode').textContent=code;
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modalDesc').textContent=desc;
+  const sizesBox=document.getElementById('modalSizes');
+  sizesBox.innerHTML='';
+  reserveBtn.classList.add('disabled'); reserveBtn.href='#'; reserveBtn.textContent='Reservar fotografía';
+  selectedNote.textContent='Selecciona una medida para preparar tu reserva.';
+  sizes.forEach(item=>{
+    const parts=item.split(' — ');
+    const row=document.createElement('button');
+    row.type='button'; row.className='size-option';
+    row.innerHTML='<span>'+parts[0]+'</span><span class="amount">'+parts[1]+'</span>';
+    row.addEventListener('click',()=>{
+      document.querySelectorAll('.size-option').forEach(x=>x.classList.remove('selected'));
+      row.classList.add('selected');
+      const medida=parts[0], precio=parts[1];
+      const message=`Hola Rodrigo, me interesa reservar una fotografía de tu galería.\n\nFotografía: "${title}"\nCódigo: ${code}\nMedida reservada: ${medida}\nPrecio: ${precio}\n\n¿Podrías confirmarme disponibilidad, acabado y entrega?`;
+      reserveBtn.href='https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(message);
+      reserveBtn.classList.remove('disabled');
+      reserveBtn.textContent='Reservar '+medida;
+      selectedNote.textContent='Seleccionada: '+medida+' · '+precio;
+    });
+    sizesBox.appendChild(row);
+  });
+  modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+}));
+
+document.getElementById('close').onclick=closeModal;
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true')}
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body></html>
